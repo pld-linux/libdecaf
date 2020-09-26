@@ -11,7 +11,7 @@ License:	MIT
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/ed448goldilocks/%{name}-%{version}.tgz
 # Source0-md5:	48b57dc6ff6be56930f0be2a5722a70e
-#Patch0:	%{name}-what.patch
+Patch0:		%{name}-cmake.patch
 URL:		http://ed448goldilocks.sourceforge.net/
 BuildRequires:	cmake >= 3.0
 BuildRequires:	doxygen
@@ -53,6 +53,7 @@ Statyczna biblioteka decaf.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 install -d build
@@ -83,6 +84,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdecaf.so
 %{_includedir}/decaf
+%{_includedir}/decaf.h
+%{_includedir}/decaf.hxx
 %dir %{_datadir}/decaf
 %{_datadir}/decaf/cmake
 
