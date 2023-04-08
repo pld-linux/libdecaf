@@ -6,7 +6,7 @@ Summary:	Elliptic curve library
 Summary(pl.UTF-8):	Biblioteka krzywych eliptycznych
 Name:		libdecaf
 Version:	1.0.2
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 #Source0:	http://downloads.sourceforge.net/ed448goldilocks/%{name}-%{version}.tgz
@@ -14,6 +14,7 @@ Group:		Libraries
 Source0:	http://deb.debian.org/debian/pool/main/libd/libdecaf/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	50d59a0d1428e91734b2aa7c1e586980
 Patch0:		%{name}-fix-attribute-deprecated-decl.patch
+Patch1:		%{name}-fix-declarations.patch
 URL:		http://ed448goldilocks.sourceforge.net/
 BuildRequires:	cmake >= 3.0
 BuildRequires:	doxygen
@@ -56,6 +57,7 @@ Statyczna biblioteka decaf.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 install -d build
