@@ -5,18 +5,20 @@
 Summary:	Elliptic curve library
 Summary(pl.UTF-8):	Biblioteka krzywych eliptycznych
 Name:		libdecaf
-Version:	1.0.0
+Version:	1.0.2
 Release:	1
 License:	MIT
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/ed448goldilocks/%{name}-%{version}.tgz
-# Source0-md5:	48b57dc6ff6be56930f0be2a5722a70e
-Patch0:		%{name}-cmake.patch
+#Source0:	http://downloads.sourceforge.net/ed448goldilocks/%{name}-%{version}.tgz
+# > 1.0.0 releases are tagged in git, but not published - use debian checkout
+Source0:	http://deb.debian.org/debian/pool/main/libd/libdecaf/%{name}_%{version}.orig.tar.gz
+# Source0-md5:	50d59a0d1428e91734b2aa7c1e586980
+Patch0:		%{name}-fix-attribute-deprecated-decl.patch
 URL:		http://ed448goldilocks.sourceforge.net/
 BuildRequires:	cmake >= 3.0
 BuildRequires:	doxygen
 BuildRequires:	libstdc++-devel
-BuildRequires:	python >= 1:2.7
+BuildRequires:	python3 >= 1:3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -84,8 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libdecaf.so
 %{_includedir}/decaf
-%{_includedir}/decaf.h
-%{_includedir}/decaf.hxx
 %dir %{_datadir}/decaf
 %{_datadir}/decaf/cmake
 
